@@ -1,0 +1,16 @@
+doc/
+rar/
+test/
+node_modules/
+src/img/
+src/images/
+src/dist
+.idea/
+gulpfile*
+upcache.json
+*.png
+*.jpg
+*.gif
+*.psd
+*.doc
+*.xml
