@@ -1,11 +1,12 @@
 /*格式化请求地址*/
 const formatUrl = (params, url)=> {
-    url += url.indexOf("?") > -1 ? "" : "?";
-    for (param in params) {
-        url += param + "=" + params[param] + "&";
-    }
-    return url.substr(0, url.length - 1);
-};
+        url += url.indexOf("?") > -1 ? "" : "?";
+        for (param in params) {
+            url += param + "=" + params[param] + "&";
+        }
+        return url.substr(0, url.length - 1);
+    },
+    requestUrl = "http://10.87.42.87:3000/src/json/getCashierInfo.json";
 /*json请求封装jsonp+XMLHttpRequest*/
 const getJson = option=>new Promise(function (resolve, reject) {
     const preload = ()=> {
@@ -48,7 +49,7 @@ const getJson = option=>new Promise(function (resolve, reject) {
 
 /*json请求*/
 let requestJson = getJson({
-    url: "http://api.itv.cp21.ott.cibntv.net/iptv/api/cashier/v1/cashier.json",
+    url: requestUrl,
     data: {
         cashierId: "5dfb001b44674614824da8756ef2b75d",
         terminalApplication: "media_cibn"
@@ -71,7 +72,7 @@ requestJson.then(res=> {
 
 /*jsonp请求*/
 let requestJsonP = getJson({
-    url: "http://api.itv.cp21.ott.cibntv.net/iptv/api/cashier/v1/cashier.json",
+    url: requestUrl,
     data: {
         cashierId: "5dfb001b44674614824da8756ef2b75d",
         terminalApplication: "media_cibn"
@@ -114,7 +115,7 @@ let option = {
         cashierId: "5dfb001b44674614824da8756ef2b75d",
         terminalApplication: "media_cibn"
     },
-    requestFetch = fetch(formatUrl(data, "http://api.itv.cp21.ott.cibntv.net/iptv/api/cashier/v1/cashier.json"), option);
+    requestFetch = fetch(formatUrl(data, requestUrl), option);
 
 requestFetch.then(res=> {
     console.log(res);
